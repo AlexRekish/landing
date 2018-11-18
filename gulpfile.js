@@ -14,7 +14,9 @@ var gulp          = require('gulp'),
 		svgstore	  = require('gulp-svgstore'),
 		webp		  = require('gulp-webp'),
 		run		  	  = require('run-sequence'),
-		del 		  = require('del');
+		del 		  = require('del'),
+		webpack		  = require('webpack-stream'),
+		pug 		  = require('gulp-pug');
 
 //server
 
@@ -55,12 +57,12 @@ gulp.task("webp", function() {
 //svg sprite creating
 
 gulp.task('sprite', function () {
-  	return gulp.src('build/img/**/icon-*.svg') 
-    .pipe(svgstore({ 
+  	return gulp.src('build/img/**/icon-*.svg')
+    .pipe(svgstore({
       inlineSvg: true
      }))
     .pipe(rename('sprite.svg'))
-    .pipe(gulp.dest('build/img/')); 
+    .pipe(gulp.dest('build/img/'));
 });
 
 // sass to css with minification
@@ -69,14 +71,14 @@ gulp.task('styles', function() {
 	return gulp.src('src/'+syntax+'/**/main.'+syntax+'')
 	.pipe(sass({ outputStyle: 'expanded' }).on('error', notify.onError()))
 	.pipe(autoprefixer( {
-			browsers: ['last 15 versions'],
+			browsers: ['last 2 versions'],
 			cascade: true
 	} ))
 	.pipe(gulp.dest('build/css'))
 	.pipe(rename({ suffix: '.min', prefix : '' }))
 	.pipe(cleancss( {
 			level: { 1: { specialComments: 0 } },
-			compatibility: 'ie8'
+			compatibility: 'ie11'
 		})) // Opt., comment out when debugging
 	.pipe(gulp.dest('build/css'))
 	.pipe(browsersync.reload( {stream: true} ));
@@ -84,10 +86,32 @@ gulp.task('styles', function() {
 
 //js optimization
 
+gulp.task('webpack', function() {
+  return gulp.src('src/js/input.js')
+    .pipe(webpack({
+    	output: {
+        filename: 'scripts.js',
+      },
+      module: {
+        rules: [
+          {
+            test: /\.(js)$/,
+            exclude: /(node_modules)/,
+            loader: 'babel-loader',
+            query: {
+              presets: ['env']
+            }
+          }
+        ]
+		}
+    }))
+    .pipe(gulp.dest('src/js/'));
+});
+
 gulp.task('js', function() {
 	return gulp.src([
 		// 'src/libs/jquery/dist/jquery.min.js',
-		'src/js/*.js', // Always at the end
+		'src/js/scripts.js', // Always at the end
 		])
 	.pipe(concat('scripts.min.js'))
 	.pipe(uglify()) // Mifify js (opt.)
@@ -100,7 +124,10 @@ gulp.task('clean', function() {
 });
 
 gulp.task('html', function() {
-	return gulp.src('src/*.html')
+	return gulp.src('src/*.pug')
+	.pipe(pug({
+		pretty: true
+	}))
 	.pipe(gulp.dest('build'))
 	.pipe(browsersync.reload( {stream: true} ));
 });
@@ -115,14 +142,15 @@ gulp.task('copy', function() {
 });
 
 gulp.task('build', function (done) {
-	run('clean', 'copy', 'html', 'styles', 'js', 'images', 'webp', 'sprite', done);
+	run('clean', 'copy', 'html', 'styles', 'webpack', 'js', 'images', 'webp', 'sprite', done);
 });
 //watcher
 
 gulp.task('watch', ['browser-sync'], function() {
 	gulp.watch('src/'+syntax+'/**/*.'+syntax+'', ['styles']);
-	gulp.watch(['libs/**/*.js', 'src/js/*.js'], ['js']);
-	gulp.watch('src/*.html', ['html']);
+	gulp.watch(['libs/**/*.js', 'src/js/*.js'], ['webpack']);
+	gulp.watch(['src/js/scripts.js'], ['js']);
+	gulp.watch('src/*.pug', ['html']);
 });
 
 gulp.task('default', ['watch']);

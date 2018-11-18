@@ -1,0 +1,54 @@
+doctype html
+html(lang="ru")
+    head
+        meta(charset="utf-8")
+        // <base href="/">
+        title Golos.io ios
+        meta(name="description" content="")
+        meta(name="keywords" content="")
+        meta(name="copyright" content="")
+        meta(http-equiv="X-UA-Compatible" content="IE=edge")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        meta(name="robots" content="all")
+        // Template Basic Images Start
+        // Template Basic Images End
+        // Custom Browsers Color Start
+        meta(name="theme-color" content="#0d0d0f")
+        // Custom Browsers Color End
+        // Preloads
+        link(rel="preload" href="css/main.min.css" as="style")
+        link(rel="preload" href="js/scripts.min.js" as="script")
+        link(rel="preload" href="fonts/roboto.woff2" as="font")
+        // Preloads End
+        link(rel="stylesheet" href="css/main.min.css")
+    body.isHome
+        header.page-header
+            a.logo__wrapper(href="#")
+                img.logo__img(src="img/logo.png" alt="Golos.io" width="90" height="30")
+            span.page-header__l10n RU
+        main
+            section.main-message
+                strong.message__header
+                    | Golos.io активно работает над выпуском приложения блог-платформы будущего теперь и на iOs платформе.
+                p.message__description
+                    | Блог-платформа Golos.io давно работает на web и Android платформах.
+                    | Теперь настал черед порадовать и пользователей iOs.
+            section.be-in-touch
+                h3.be-in-touch__title Будь на связи
+                strong.message__header Приложение Golos.io на iOs появится уже совсем скоро!
+                p.message__description Будь в числе первых пользователей с возможностью протестировать приложение.
+                form.be-in-touch__form(action="")
+                    div
+                        label.be-in-touch__label(for="")
+                            input.be-in-touch__checkbox.visually-hidden(type="checkbox" name="" id="")
+                            | Хочу тестировать. Добавьте меня в список тестировщиков альфа версии приложения
+                            span.be-in-touch__custom-checkbox
+                        label.be-in-touch__label(for="")
+                            input.be-in-touch__checkbox.visually-hidden(type="checkbox" name="" id="")
+                            | Сообщите мне о выходе приложения.
+                            span.be-in-touch__custom-checkbox
+                    .be-in-touch__email-wrapper
+                        input.be-in-touch__email(type="email" name="" id="" placeholder="Email")
+                        button.be-in-touch__send-button(type="submit") Отправить
+        footer
+        script(src="js/scripts.min.js")
