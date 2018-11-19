@@ -11,7 +11,7 @@
     margin: 0
 
 .about-golos__description
-    line-height: 1.29px
+    line-height: 1.29
     color: #111
     font-weight: bold
     margin: 0
@@ -35,3 +35,33 @@
 .about-golos__img
     height: 450px
     width: 100%
+
+@media (min-width: 1280px)
+    .about-golos
+        display: flex
+        max-width: 1280px
+        padding: 100px 154px
+        margin: 0 auto
+
+    .about-golos__wrapper
+        max-width: 610px
+
+    .about-golos__title
+        font-size: 34px
+        line-height: 26px
+        letter-spacing: 0.37px
+        padding: 0 0 20px 0
+
+    .about-golos__description
+        line-height: 18px
+
+    .about-golos__appeals
+        display: flex
+        flex-wrap: wrap
+
+    .about-golos__appeal
+        width: 50%
+        padding: 40px 40px 0 0
+
+        &:nth-child(5)
+            width: 100%

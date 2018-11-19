@@ -66,20 +66,42 @@ html(lang="ru")
                             p.steps__step-header=`Шаг ${index + 1}`
                             p.steps__step-description=val
             section.about-golos
-                h2.about-golos__title Golos.io
-                strong.about-golos__description Место, где можно самовыражаться и получать поддержку. Рассказывайте о том, что важно для вас. Открывайте для себя новое и интересное.
-                .about-golos__appeals
-                    - const appeals = [{ title: 'В интересах каждого', appeal: 'Писать можно обо всем на свете — расскажите о ракетостроении или выложите фотографию любимого кота.' }, { title: 'Самовыражайся', appeal: 'Рассказывай о том, что важно для тебя. Публикуй статьи, стихи, фотографии, видео, аудиозаписи, что угодно.' }, { title: 'Будь собой', appeal: 'Создавай блог таким, как тебе нравится. Голосуй за нужные посты. Подписывайся на волнующие тебя темы и открывай новые.' }, { title: 'Находи друзей по интересам', appeal: 'Общайся с миллионами людей в миллионах сообществ. Исследуй миллионы разных #тегов.' }, { title: 'Как это работает?', appeal: 'Golos.io — это блог-платформа на блокчейне , где пользователи могут публиковать записи и голосовать за понравившиеся статьи. Голосуя за понравившуюся статью ты отдаешь свой «голос» за нее.' }]
-                    each val in appeals
-                        .about-golos__appeal
-                            h3.about-golos__appeal-title=val.title
-                            p.about-golos__appeal-description=val.appeal
+                .about-golos__wrapper
+                    h2.about-golos__title Golos.io
+                    strong.about-golos__description Место, где можно самовыражаться и получать поддержку. Рассказывайте о том, что важно для вас. Открывайте для себя новое и интересное.
+                    .about-golos__appeals
+                        - const appeals = [{ title: 'В интересах каждого', appeal: 'Писать можно обо всем на свете — расскажите о ракетостроении или выложите фотографию любимого кота.' }, { title: 'Самовыражайся', appeal: 'Рассказывай о том, что важно для тебя. Публикуй статьи, стихи, фотографии, видео, аудиозаписи, что угодно.' }, { title: 'Будь собой', appeal: 'Создавай блог таким, как тебе нравится. Голосуй за нужные посты. Подписывайся на волнующие тебя темы и открывай новые.' }, { title: 'Находи друзей по интересам', appeal: 'Общайся с миллионами людей в миллионах сообществ. Исследуй миллионы разных #тегов.' }, { title: 'Как это работает?', appeal: 'Golos.io — это блог-платформа на блокчейне , где пользователи могут публиковать записи и голосовать за понравившиеся статьи. Голосуя за понравившуюся статью ты отдаешь свой «голос» за нее.' }]
+                        each val in appeals
+                            .about-golos__appeal
+                                h3.about-golos__appeal-title=val.title
+                                p.about-golos__appeal-description=val.appeal
                 .about-golos__img
             section.screenshots
-                h2.screenshots__title Скриншоты
-                .screenshots__wrapper
+                .screenshots__container
+                    h2.screenshots__title Скриншоты
+                    .screenshots__wrapper
+                        .screenshots__screenshot
+                        .screenshots__screenshot
+                        .screenshots__screenshot
+                        .screenshots__screenshot
             section.android
+                .android__container
+                    .android__wrapper
+                        h2.android__title Уже доступно для android
+                        p.android__description Приложение для андроид вы можете скачать прямо сейчас
+                        a.android__link(href="")
+                            span.visually-hidden Golos.io в google play
+                    .android__img-wrapper
             section.android-reviews
+                .android-reviews__container
+                    .android__img-wrapper
+                        img(src="img/395.svg", alt="")
+                    .android-reviews__wrapper
+                        .android-reviews__review
+                            h2.android-reviews__title Oтзывы андройд приложения
+                            p.android-reviews__review-author Anton Lis
+                            p.android-reviews__review-text Интересное приложение) пока еще не полностью разобралсяв нем но это действительно чтото новое чего еще небыло на просторах интернета))
+                        .android-reviews__reviewers
         footer.page-footer
             include _templates/social.pug
             p.page-footer__copyrights  IT, OOO. All rights reserved
