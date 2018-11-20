@@ -32,7 +32,6 @@ html(lang="ru")
                         button(type="button").page-header__l10n-button RU
                     li.page-header__l10n-item
                         button(type="button").page-header__l10n-button EN
-
         main
             section.be-in-touch
                 .be-in-touch__wrapper
@@ -49,7 +48,7 @@ html(lang="ru")
                     form.be-in-touch__form(action="")
                         div.be-in-touch__checkbox-wrapper
                             label.be-in-touch__label(for="want-test")
-                                input.be-in-touch__checkbox.visually-hidden(type="checkbox" name="" id="want-test")
+                                input.be-in-touch__checkbox.visually-hidden(type="checkbox" name="" id="want-test" checked)
                                 span.be-in-touch__checkbox-indicator
                                 | Хочу тестировать. Добавьте меня в список тестировщиков альфа версии приложения
                             label.be-in-touch__label(for="want-message")
@@ -95,12 +94,15 @@ html(lang="ru")
                             source(srcset="img/screenshots-1@2x.webp 2x, img/screenshots-1@3x.webp 3x" type="image/webp")
 
                             source(srcset="img/screenshots-1@2x.png 2x, img/screenshots-1@3x.png 3x" type="image/png")
-                            img.screenshots__screenshot(src="img/screenshots-1.png", alt="")
+                            img.screenshots__screenshot.screenshots__screenshot--active(src="img/screenshots-1.png", alt="")
                         picture
                             source(srcset="img/screenshots-2@2x.webp 2x, img/screenshots-2@3x.webp 3x" type="image/webp")
 
                             source(srcset="img/screenshots-2@2x.png 2x, img/screenshots-2@3x.png 3x" type="image/png")
                             img.screenshots__screenshot(src="img/screenshots-2.png", alt="")
+                    .screenshots__active-indicator
+                        button.screenshots__button(type="button" disabled)
+                        button.screenshots__button(type="button")
             section.android
                 .android__container
                     .android__wrapper
@@ -128,7 +130,9 @@ html(lang="ru")
                                     while starCount > 0
                                         img.android-reviews__review-star(src="img/logo/icon-star.svg", alt="Звезда рейтинга" width="14" height="14")
                                         - starCount--;
+                                button.android-reviews__next-review(type="button")
                             p.android-reviews__review-text Интересное приложение) пока еще не полностью разобралсяв нем но это действительно чтото новое чего еще небыло на просторах интернета))
+                                button.android-reviews__next-review(type="button")
                         .android-reviews__reviewers
         footer.page-footer
             include _templates/social.pug

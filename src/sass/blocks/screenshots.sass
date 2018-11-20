@@ -14,7 +14,40 @@
     padding: 0 0 30px 0
 
 .screenshots__wrapper
-    height: 280px
+    display: flex
+    justify-content: space-between
+    height: 279px
+    overflow: hidden
+
+.screenshots__screenshot
+    display: none
+    max-height: 100%
+    width: 100%
+
+.screenshots__screenshot--active
+    display: block
+
+.screenshots__active-indicator
+    display: flex
+    justify-content: center
+    padding: 30px 0 0 0
+
+.screenshots__button
+    padding: 0
+    margin: 0
+    border: none
+    cursor: pointer
+    width: 9px
+    height: 9px
+    border-radius: 50px
+    background-color: #e1e1e1
+
+    &:disabled
+        background-color: #ffb839
+
+.screenshots__button:not(:last-child)
+    margin-right: 18px
+
 
 @media (min-width: 1280px)
     .screenshots
@@ -40,4 +73,5 @@
         justify-content: space-between
 
     .screenshots__screenshot
+        display: block
 

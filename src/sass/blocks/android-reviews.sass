@@ -31,10 +31,41 @@
     margin-right: 7px
 
 .android-reviews__review-text
+    position: relative
     padding: 0 0 15px 0
     margin: 0
     font-size: 16px
     line-height: 24px
+
+.android-reviews__next-review
+    position: absolute
+    padding: 0
+    margin: 0
+    bottom: calc(100% + 6px)
+    right: 0
+    width: 37px
+    height: 37px
+    background-color: $blue
+    border: none
+    border-radius: 50px
+    cursor: pointer
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.4)
+    transition: transform 0.2s ease
+    &::after
+        display: block
+        content: ""
+        position: absolute
+        top: 50%
+        left: 50%
+        width: 16px
+        height: 16px
+        background-image: url('../../img/logo/icon-arrow.svg')
+        background-position: center
+        background-size: contain
+        transform: translate(-50%, -50%)
+
+    &:hover
+        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.6)
 
 .android-reviews__img-wrapper
     width: 100%
@@ -70,8 +101,11 @@
     .android-reviews__review-header
         padding: 0 0 20px 0
 
+    .android-reviews__next-review
+        bottom: -11px
+        right: -181px
+
     .android-reviews__review-text
-        position: relative
 
         &::before
             display: block

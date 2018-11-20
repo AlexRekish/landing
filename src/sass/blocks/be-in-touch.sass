@@ -36,8 +36,8 @@
         position: absolute
         top: 50%
         left: 0
-        width: 21px
-        height: 21px
+        width: 22px
+        height: 22px
         border: 3px solid $grey
         border-radius: 2px
         transform: translateY(-50%)
@@ -54,7 +54,6 @@
         border-color: $blue
         background-image: url("../../img/logo/checkbox-on.svg")
         background-position: center
-        background-repeat: no-repeat
 
 .be-in-touch__email-wrapper
     display: flex
@@ -67,7 +66,6 @@
     padding: 14px 20px
     width: 192px
     height: 48px
-    height: 100%
     border: none
     border-radius: 85px 0 0 85px
     box-shadow: 0 1px 11px 0 rgba(0, 0, 0, 0.06)
@@ -102,6 +100,10 @@
     text-transform: uppercase
     letter-spacing: normal
     line-height: 1.92
+    transition: box-shadow 0.1s ease
+
+    &:hover
+        box-shadow: 5px 1px 11px 0 rgba(0, 0, 0, 0.3)
 
 .be-in-touch__img-wrapper
     width: 100%
