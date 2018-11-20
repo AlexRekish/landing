@@ -23,9 +23,16 @@ html(lang="ru")
         link(rel="stylesheet" href="css/main.min.css")
     body.isHome
         header.page-header
-            a.logo__wrapper(href="#")
-                img.logo__img(src="img/logo.png" alt="Golos.io" width="90" height="30")
-            span.page-header__l10n RU
+            a.logo__wrapper(href="https://golos.io" target="_blank")
+                img.logo__img(src="img/logo/logo.svg" alt="Golos.io" width="28" height="30")
+                p.logo Golos
+            .page-header__l10n
+                ul.page-header__l10n-list
+                    li.page-header__l10n-item.page-header__l10n-item--active.page-header__l10n-item--active-close
+                        button(type="button").page-header__l10n-button RU
+                    li.page-header__l10n-item
+                        button(type="button").page-header__l10n-button EN
+
         main
             section.be-in-touch
                 .be-in-touch__wrapper
@@ -54,15 +61,18 @@ html(lang="ru")
                             button.be-in-touch__send-button(type="submit") Отправить
                 .be-in-touch__img-wrapper
                     picture
-                        source(media="(min-width: 1024px)" srcset="img/group-dk.png 1x, img/group-dk@2x.png 2x, img/group-dk@3x.png 3x")
-                        source(srcset="img/group@2x.png 2x, img/group-dk@3x.png 3x")
-                        img(src="img/group.png", alt="" height="734")
+                        source(media="(max-width: 1087px)" srcset="img/be-in-touch.webp 1x, img/be-in-touch@2x.webp 2x, img/be-in-touch@3x.webp 3x" type="image/webp")
+                        source(srcset="img/be-in-touch_dk@2x.webp 2x, img/be-in-touch_dk@3x.webp 3x" type="image/webp")
+
+                        source(media="(max-width: 1087px)" srcset="img/be-in-touch.png 1x, img/be-in-touch@2x.png 2x, img/be-in-touch@3x.png 3x" type="image/png")
+                        source(srcset="img/be-in-touch_dk@2x.png 2x, img/be-in-touch_dk@3x.png 3x" type="image/png")
+                        img(src="img/be-in-touch_dk.png", alt="" height="734")
             section.steps
                 .steps__container
                     - const steps = ['Подпишись', 'Получи тестовую версию', 'Узнай первым о релизе приложения']
                     each val, index in steps
                         .steps__step
-                            img(src=`img/logo/icon-instr-${index + 1}.svg`, alt="" width="76" height="76")
+                            img(src=`img/logo/icon-instr-${index + 1}.svg`, alt=`Иконка '${val}'` width="76" height="76")
                             p.steps__step-header=`Шаг ${index + 1}`
                             p.steps__step-description=val
             section.about-golos
@@ -70,36 +80,54 @@ html(lang="ru")
                     h2.about-golos__title Golos.io
                     strong.about-golos__description Место, где можно самовыражаться и получать поддержку. Рассказывайте о том, что важно для вас. Открывайте для себя новое и интересное.
                     .about-golos__appeals
-                        - const appeals = [{ title: 'В интересах каждого', appeal: 'Писать можно обо всем на свете — расскажите о ракетостроении или выложите фотографию любимого кота.' }, { title: 'Самовыражайся', appeal: 'Рассказывай о том, что важно для тебя. Публикуй статьи, стихи, фотографии, видео, аудиозаписи, что угодно.' }, { title: 'Будь собой', appeal: 'Создавай блог таким, как тебе нравится. Голосуй за нужные посты. Подписывайся на волнующие тебя темы и открывай новые.' }, { title: 'Находи друзей по интересам', appeal: 'Общайся с миллионами людей в миллионах сообществ. Исследуй миллионы разных #тегов.' }, { title: 'Как это работает?', appeal: 'Golos.io — это блог-платформа на блокчейне , где пользователи могут публиковать записи и голосовать за понравившиеся статьи. Голосуя за понравившуюся статью ты отдаешь свой «голос» за нее.' }]
-                        each val in appeals
-                            .about-golos__appeal
-                                h3.about-golos__appeal-title=val.title
-                                p.about-golos__appeal-description=val.appeal
-                .about-golos__img
+                        include _templates/appeals.pug
+                .about-golos__img-wrapper
+                    picture
+                        source(srcset="img/about-golos@2x.webp 2x, img/about-golos@3x.webp 3x" type="image/webp")
+
+                        source(srcset="img/about-golos@2x.png 2x, img/about-golos@3x.png 3x" type="image/png")
+                        img.about-golos__img(src="img/about-golos.png", alt="")
             section.screenshots
                 .screenshots__container
                     h2.screenshots__title Скриншоты
                     .screenshots__wrapper
-                        .screenshots__screenshot
-                        .screenshots__screenshot
-                        .screenshots__screenshot
-                        .screenshots__screenshot
+                        picture
+                            source(srcset="img/screenshots-1@2x.webp 2x, img/screenshots-1@3x.webp 3x" type="image/webp")
+
+                            source(srcset="img/screenshots-1@2x.png 2x, img/screenshots-1@3x.png 3x" type="image/png")
+                            img.screenshots__screenshot(src="img/screenshots-1.png", alt="")
+                        picture
+                            source(srcset="img/screenshots-2@2x.webp 2x, img/screenshots-2@3x.webp 3x" type="image/webp")
+
+                            source(srcset="img/screenshots-2@2x.png 2x, img/screenshots-2@3x.png 3x" type="image/png")
+                            img.screenshots__screenshot(src="img/screenshots-2.png", alt="")
             section.android
                 .android__container
                     .android__wrapper
                         h2.android__title Уже доступно для android
-                        p.android__description Приложение для андроид вы можете скачать прямо сейчас
-                        a.android__link(href="")
+                        p.android__description Приложение для android вы можете скачать прямо сейчас
+                        a.android__link(href="https://play.google.com/store/apps/details?id=io.golos.golos" target="_blank")
                             span.visually-hidden Golos.io в google play
                     .android__img-wrapper
+                        picture
+                            source(srcset="img/android@2x.webp 2x, img/android@3x.webp 3x" type="image/webp")
+
+                            source(srcset="img/android@2x.png 2x, img/android@3x.png 3x" type="image/png")
+                            img.android__img(src="img/android.png", alt="")
             section.android-reviews
                 .android-reviews__container
-                    .android__img-wrapper
-                        img(src="img/395.svg", alt="")
+                    .android-reviews__img-wrapper
+                        img.android-reviews__img(src="img/android-reviews.svg", alt="")
                     .android-reviews__wrapper
                         .android-reviews__review
-                            h2.android-reviews__title Oтзывы андройд приложения
-                            p.android-reviews__review-author Anton Lis
+                            h2.android-reviews__title Oтзывы android приложения
+                            .android-reviews__review-header
+                                p.android-reviews__review-author Anton Lis
+                                .android-reviews__review-stars
+                                    - let starCount = 5;
+                                    while starCount > 0
+                                        img.android-reviews__review-star(src="img/logo/icon-star.svg", alt="Звезда рейтинга" width="14" height="14")
+                                        - starCount--;
                             p.android-reviews__review-text Интересное приложение) пока еще не полностью разобралсяв нем но это действительно чтото новое чего еще небыло на просторах интернета))
                         .android-reviews__reviewers
         footer.page-footer

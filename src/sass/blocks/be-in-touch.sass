@@ -109,14 +109,14 @@
     overflow: hidden
     text-align: right
 
-@media (min-width: 1280px)
+@media (min-width: 1088px)
     .be-in-touch
         flex-direction: row
-        max-width: 1280px
+        max-width: 1088px
         margin: 0 auto
 
     .be-in-touch__wrapper
-        padding: 0 123px 0 160px
+        padding: 0 40px 0 40px
         max-width: 710px
 
     .be-in-touch__img-wrapper
@@ -132,9 +132,11 @@
     .be-in-touch__form
         padding: 25px 0 30px 0
 
-    .be-in-touch__label:not(:last-child)
+    .be-in-touch__label
         font-size: 14px
         line-height: 18px
+
+    .be-in-touch__label:not(:last-child)
         margin-bottom: 25px
 
     .be-in-touch__checkbox-wrapper
@@ -150,3 +152,10 @@
 
     .be-in-touch__send-button
         width: 50%
+
+@media (min-width: 1280px)
+    .be-in-touch
+        max-width: 1280px
+
+    .be-in-touch__wrapper
+        padding: 0 123px 0 160px

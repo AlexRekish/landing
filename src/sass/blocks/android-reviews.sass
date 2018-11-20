@@ -1,18 +1,62 @@
 @import '../_vars.sass'
+.android-reviews
+    background-color: #fff
 
-@media (min-width: 1280px)
-    .android-reviews
-        background-color: #fff
+.android-reviews__container
+    display: flex
+    flex-direction: column-reverse
+    padding: 40px 16px
+
+.android-reviews__title
+    padding: 0 0 25px 0
+    margin: 0
+    font-size: 26px
+    line-height: 30px
+
+.android-reviews__review-header
+    padding: 0 0 10px 0
+    display: flex
+    align-items: center
+
+.android-reviews__review-author
+    padding: 0 15px 0 0
+    margin: 0
+    font-weight: bold
+    font-size: 22px
+    line-height: 30px
+    letter-spacing: 0
+    color: #393636
+
+.android-reviews__review-star:not(:last-child)
+    margin-right: 7px
+
+.android-reviews__review-text
+    padding: 0 0 15px 0
+    margin: 0
+    font-size: 16px
+    line-height: 24px
+
+.android-reviews__img-wrapper
+    width: 100%
+
+.android-reviews__img
+    width: 100%
+    max-width: 100%
+
+@media (min-width: 1088px)
 
     .android-reviews__container
-        display: flex
+        flex-direction: row
         margin: 0 auto
-        padding: 55px 96px 75px 96px
-        max-width: 1280px
+        padding: 55px 40px 75px 40px
+        max-width: 1088px
 
     .android-reviews__img-wrapper
         width: 441px
         height: 350px
+
+    .android-reviews__wrapper
+        padding: 0
 
     .android-reviews__review
         padding: 0 83px
@@ -20,21 +64,40 @@
 
     .android-reviews__title
         padding: 45px 0 35px 0
-        margin: 0
         font-size: 34px
         line-height: 40px
 
-    .android-reviews__review-author
+    .android-reviews__review-header
         padding: 0 0 20px 0
-        margin: 0
-        font-weight: bold
-        font-size: 22px
-        line-height: 30px
-        letter-spacing: 0
-        color: #393636
 
     .android-reviews__review-text
-        padding: 0
-        margin: 0
-        font-size: 16px
-        line-height: 24px
+        position: relative
+
+        &::before
+            display: block
+            position: absolute
+            top: 0
+            left: -70px
+            content: ""
+            width: 40px
+            height: 26px
+            background-image: url("../../img/logo/icon-2.svg")
+            background-position: center
+            background-size: contain
+
+        &::after
+            display: block
+            position: absolute
+            bottom: 0
+            right: -50px
+            content: ""
+            width: 40px
+            height: 26px
+            background-image: url("../../img/logo/icon-1.svg")
+            background-position: center
+            background-size: contain
+
+@media (min-width: 1280px)
+    .android-reviews__container
+        padding: 55px 96px 75px 96px
+        max-width: 1280px

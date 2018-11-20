@@ -4,12 +4,77 @@
   display: flex
   justify-content: space-between
   align-items: center
+  position: relative
   height: 65px
   width: 100%
   padding: 20px 18px 15px
 
-.page-header_l10n
+.page-header__l10n
+    position: absolute
+    top: 20px
+    right: 160px
+    background-color: #fff
+    padding: 0 18px
+    border-radius: 8px
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.06)
 
-@media (min-width: 1024px)
+.page-header__l10n-list
+    margin: 0
+    padding: 0
+    list-style: none
+
+.page-header__l10n-item
+    display: none
+    margin: 0
+    padding: 0
+
+.page-header__l10n-item--active
+    display: block
+    position: relative
+
+    .page-header__l10n-button
+        color: #393636
+
+    &::after
+        display: block
+        position: absolute
+        top: 50%
+        right: -7px
+        content: ""
+        width: 5px
+        height: 5px
+        background-position: center
+        background-size: contain
+        transform: translateY(-50%)
+
+    &-close::after
+        background-image: url('../../img/logo/sort-down.svg')
+
+    &-open::after
+        background-image: url('../../img/logo/sort-up.svg')
+
+.page-header__l10n-button
+    margin: 0
+    padding: 0
+    background: none
+    border: none
+    cursor: pointer
+    font-size: 16px
+    line-height: 32px
+    letter-spacing: 0
+    color: #959595
+
+    &:hover
+        color: #393636
+
+
+@media (min-width: 1088px)
     .page-header
+        margin: 0 auto
+        max-width: 1088px
+        padding: 20px 40px 15px
+
+@media (min-width: 1280px)
+    .page-header
+        max-width: 1280px
         padding: 20px 160px 15px

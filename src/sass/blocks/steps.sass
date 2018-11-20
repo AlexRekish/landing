@@ -7,10 +7,12 @@
 
 .steps__step
     display: flex
+    position: relative
     flex-direction: column
     align-items: center
     width: 100%
     padding-bottom: 40px
+    z-index: 5
 
 .steps__step-header
     color: #fff
@@ -32,14 +34,14 @@
     height: 46px
     text-align: center
 
-@media (min-width: 1280px)
+@media (min-width: 1088px)
     .steps
-        padding: 100px 255px 70px 255px
+        padding: 100px 40px 70px 40px
 
     .steps__container
         display: flex
         position: relative
-        max-width: 1280px
+        max-width: 1088px
         margin: 0 auto
 
         &::after
@@ -55,3 +57,10 @@
     .steps__step-description
         max-width: 240px
         line-height: 22px
+
+@media (min-width: 1280px)
+    .steps
+        padding: 100px 255px 70px 255px
+
+    .steps__container
+        max-width: 1280px
