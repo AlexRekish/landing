@@ -26,12 +26,11 @@ html(lang="ru")
             a.logo__wrapper(href="https://golos.io" target="_blank" rel="noreferrer")
                 img.logo__img(src="img/logo/logo.svg" alt="Golos.io" width="28" height="30")
                 p.logo Golos
-            .page-header__l10n
-                ul.page-header__l10n-list(tabindex="0")
-                    li.page-header__l10n-item.page-header__l10n-item--active.page-header__l10n-item--active-close
-                        button(type="button").page-header__l10n-button RU
+            .page-header__l10n(tabindex="0")
+                p.page-header__l10n-active RU
+                ul.page-header__l10n-list
                     li.page-header__l10n-item
-                        button(type="button").page-header__l10n-button EN
+                        a(href="#").page-header__l10n-locale EN
         main
             section.be-in-touch
                 .be-in-touch__wrapper
@@ -122,25 +121,20 @@ html(lang="ru")
                     .android-reviews__img-wrapper
                         img.android-reviews__img(src="img/android-reviews.svg", alt="")
                     .android-reviews__wrapper
-                        .android-reviews__review
-                            h2.android-reviews__title Oтзывы android приложения
-                            .android-reviews__review-header
-                                img.android-reviews__reviewer-ava.android-reviews__reviewer-ava--mob(src="img/logo/active-a.svg", alt="" width="30")
-                                p.android-reviews__review-author Anton Lis
-                                .android-reviews__review-stars
-                                    - let starCount = 5;
-                                    while starCount > 0
-                                        img.android-reviews__review-star(src="img/logo/icon-star.svg", alt="Звезда рейтинга" width="14" height="14")
-                                        - starCount--;
-                                button.android-reviews__next-review.android-reviews__next-review--mob(type="button")
-                                    span.visually-hidden Следующий отзыв
-                            p.android-reviews__review-text Интересное приложение) пока еще не полностью разобралсяв нем но это действительно чтото новое чего еще небыло на просторах интернета))
+                        h2.android-reviews__title Oтзывы android приложения
+                        button.android-reviews__next-review.android-reviews__next-review--mob(type="button")
+                            span.visually-hidden Следующий отзыв
+                        .android-reviews__review-wrapper
+                            .android-reviews__review-container
+
+                                .android-reviews__reviews-carousel
+                                    include _templates/android-review.pug
                     .android-reviews__reviewers
-                        img.android-reviews__reviewer-ava.android-reviews__reviewer-ava--active(src="img/logo/active-a.svg", alt="" width="30")
-                        img.android-reviews__reviewer-ava(src="img/logo/active-m-a@3x.png", alt="" width="30")
-                        img.android-reviews__reviewer-ava(src="img/logo/active-r-p.svg", alt="" width="30")
-                        img.android-reviews__reviewer-ava(src="img/logo/active-t-d@3x.png", alt="" width="30")
-                        img.android-reviews__reviewer-ava(src="img/logo/active-c-p.svg", alt="" width="30")
+                        img.android-reviews__reviewer-ava.android-reviews__reviewer-ava--desk.android-reviews__reviewer-ava--active(src="img/logo/active-a.svg", alt="" width="30")
+                        img.android-reviews__reviewer-ava.android-reviews__reviewer-ava--desk(src="img/logo/active-m-a@3x.png", alt="" width="30")
+                        img.android-reviews__reviewer-ava.android-reviews__reviewer-ava--desk(src="img/logo/active-r-p.svg", alt="" width="30")
+                        img.android-reviews__reviewer-ava.android-reviews__reviewer-ava--desk(src="img/logo/active-t-d@3x.png", alt="" width="30")
+                        img.android-reviews__reviewer-ava.android-reviews__reviewer-ava--desk(src="img/logo/active-c-p.svg", alt="" width="30")
                         button.android-reviews__next-review.android-reviews__next-review--desk(type="button")
                             span.visually-hidden Следующий отзыв
 

@@ -1,13 +1,22 @@
 @import '../_vars.sass'
 
 .page-header
-  display: flex
-  justify-content: space-between
-  align-items: center
-  position: relative
-  height: 65px
-  width: 100%
-  padding: 20px 18px 15px
+    display: flex
+    justify-content: space-between
+    align-items: center
+    position: relative
+    height: 65px
+    width: 100%
+    padding: 20px 18px 15px
+
+.page-header__l10n-list
+    display: none
+    margin: 0
+    padding: 0
+    list-style: none
+
+    &--open
+        display: block
 
 .page-header__l10n
     position: absolute
@@ -17,27 +26,14 @@
     padding: 0 18px
     border-radius: 8px
     box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.06)
+    font-size: 16px
+    line-height: 32px
+    cursor: pointer
 
-.page-header__l10n-list
+.page-header__l10n-active
     margin: 0
     padding: 0
-    list-style: none
-
-    &:hover .page-header__l10n-item,
-    &:focus .page-header__l10n-item
-        display: block
-
-.page-header__l10n-item
-    display: none
-    margin: 0
-    padding: 0
-
-.page-header__l10n-item--active
-    display: block
     position: relative
-
-    .page-header__l10n-button
-        color: #393636
 
     &::after
         display: block
@@ -47,17 +43,19 @@
         content: ""
         width: 5px
         height: 5px
+        background-image: url('../img/logo/sort-down.svg')
         background-position: center
         background-size: contain
         transform: translateY(-50%)
 
-    &-close::after
-        background-image: url('../img/logo/sort-down.svg')
-
-    &-open::after
+    &--open::after
         background-image: url('../img/logo/sort-up.svg')
 
-.page-header__l10n-button
+.page-header__l10n-item
+    margin: 0
+    padding: 0
+
+.page-header__l10n-locale
     margin: 0
     padding: 0
     background: none
@@ -67,6 +65,7 @@
     line-height: 32px
     letter-spacing: 0
     color: #959595
+    text-decoration: none
 
     &:hover
         color: #393636
@@ -79,7 +78,7 @@
         padding: 20px 40px 15px
 
     .page-header__l10n
-         right: 40px
+        right: 40px
 
 @media (min-width: 1280px)
     .page-header

@@ -1,0 +1,45 @@
+-
+    const reviews = [
+        {
+            author: 'Anton Lis',
+            starCount: 5,
+            text: 'Интересное приложение) пока еще не полностью разобралсяв нем но это действительно чтото новое чего еще небыло на просторах интернета))',
+            active: true
+        },
+        {
+            author: 'Marat Azimov',
+            starCount: 5,
+            text: 'Только сегодня узнал об этом проекте. Очень понравилось сразу. Наконец-то появилось что-то новое, похоже, наверно, на фейс, но более продвинутое. Класс!',
+            active: false
+        },
+        {
+            author: 'Роман Коротков',
+            starCount: 5,
+            text: 'Огромная мотивация для творчества и тонны интересной информации)',
+            active: false
+        },
+        {
+            author: 'Тень Дьявола',
+            starCount: 5,
+            text: 'Это серьезная платформа, у которой есть будущее. Спасибо разработчикам за приложение.',
+            active: false
+        },
+        {
+            author: 'Сергей Бабик',
+            starCount: 5,
+            text: 'Пока что лучшее, что попадалось.',
+            active: false
+        },
+    ]
+
+each review in reviews
+    .android-reviews__review(class=review.active ? 'android-reviews__review--active' : '')
+        .android-reviews__review-header
+            img.android-reviews__reviewer-ava.android-reviews__reviewer-ava--mob(src="img/logo/active-a.svg", alt="" width="30")
+            p.android-reviews__review-author=review.author
+            .android-reviews__review-stars
+                - let starCount = review.starCount;
+                while starCount > 0
+                    img.android-reviews__review-star(src="img/logo/icon-star.svg", alt="Звезда рейтинга" width="14" height="14")
+                    - starCount--;
+        p.android-reviews__review-text=review.text
