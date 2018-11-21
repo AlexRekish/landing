@@ -27,7 +27,7 @@ html(lang="ru")
                 img.logo__img(src="img/logo/logo.svg" alt="Golos.io" width="28" height="30")
                 p.logo Golos
             .page-header__l10n
-                ul.page-header__l10n-list
+                ul.page-header__l10n-list(tabindex="0")
                     li.page-header__l10n-item.page-header__l10n-item--active.page-header__l10n-item--active-close
                         button(type="button").page-header__l10n-button RU
                     li.page-header__l10n-item
@@ -39,7 +39,7 @@ html(lang="ru")
                         h1.message__header
                             | Golos.io активно работает над выпуском приложения блог-платформы будущего теперь и на iOs платформе.
                         p.message__description
-                            | Блог-платформа Golos.io давно работает на web и Android платформах.
+                            | Децентрализованная блог-платформа на блокчейне Голос давно работает на web платформе и имеет собственное приложения на Android.
                             br
                             | Теперь настал черед порадовать и пользователей iOs.
                     h2.be-in-touch__title Будь на связи
@@ -124,16 +124,23 @@ html(lang="ru")
                         .android-reviews__review
                             h2.android-reviews__title Oтзывы android приложения
                             .android-reviews__review-header
+                                img.android-reviews__reviewer-ava.android-reviews__reviewer-ava--mob(src="img/logo/active-a.svg", alt="" width="30")
                                 p.android-reviews__review-author Anton Lis
                                 .android-reviews__review-stars
                                     - let starCount = 5;
                                     while starCount > 0
                                         img.android-reviews__review-star(src="img/logo/icon-star.svg", alt="Звезда рейтинга" width="14" height="14")
                                         - starCount--;
-                                button.android-reviews__next-review(type="button")
+                                button.android-reviews__next-review.android-reviews__next-review--mob(type="button")
                             p.android-reviews__review-text Интересное приложение) пока еще не полностью разобралсяв нем но это действительно чтото новое чего еще небыло на просторах интернета))
-                                button.android-reviews__next-review(type="button")
-                        .android-reviews__reviewers
+                    .android-reviews__reviewers
+                        img.android-reviews__reviewer-ava.android-reviews__reviewer-ava--active(src="img/logo/active-a.svg", alt="" width="30")
+                        img.android-reviews__reviewer-ava(src="img/logo/active-m-a-p@3x.png", alt="" width="30")
+                        img.android-reviews__reviewer-ava(src="img/logo/active-r-p.svg", alt="" width="30")
+                        img.android-reviews__reviewer-ava(src="img/logo/active-t-d@3x.png", alt="" width="30")
+                        img.android-reviews__reviewer-ava(src="img/logo/active-c-p.svg", alt="" width="30")
+                        button.android-reviews__next-review.android-reviews__next-review--desk(type="button")
+
         footer.page-footer
             include _templates/social.pug
             p.page-footer__copyrights  IT, OOO. All rights reserved

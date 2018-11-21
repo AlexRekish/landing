@@ -38,11 +38,9 @@
     line-height: 24px
 
 .android-reviews__next-review
-    position: absolute
+    position: relative
     padding: 0
-    margin: 0
-    bottom: calc(100% + 6px)
-    right: 0
+    margin: 0 0 0 33px
     width: 37px
     height: 37px
     background-color: $blue
@@ -67,12 +65,28 @@
     &:hover
         box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.6)
 
+    &--desk
+        display: none
+
+    &--mob
+        display: block
+
 .android-reviews__img-wrapper
+    display: flex
+    justify-content: center
     width: 100%
 
 .android-reviews__img
-    width: 100%
+    width: 328px
     max-width: 100%
+
+.android-reviews__reviewers
+    display: none
+
+.android-reviews__reviewer-ava
+    &--mob
+        width: 44px
+        margin-right: 10px
 
 @media (min-width: 1088px)
 
@@ -83,8 +97,12 @@
         max-width: 1088px
 
     .android-reviews__img-wrapper
+        justify-content: flex-start
         width: 441px
         height: 350px
+
+    .android-reviews__img
+        width: 100%
 
     .android-reviews__wrapper
         padding: 0
@@ -102,8 +120,12 @@
         padding: 0 0 20px 0
 
     .android-reviews__next-review
-        bottom: -11px
-        right: -181px
+        margin: 0
+        &--desk
+            display: block
+
+        &--mob
+            display: none
 
     .android-reviews__review-text
 
@@ -130,6 +152,28 @@
             background-image: url("../../img/logo/icon-1.svg")
             background-position: center
             background-size: contain
+
+    .android-reviews__reviewers
+        display: flex
+        flex-direction: column
+        align-items: center
+        padding: 25px 0 0 70px
+
+    .android-reviews__reviewer-ava
+        &--mob
+            display: none
+
+        &:not(:nth-child(5))
+            padding: 8px 0
+
+        &:first-child
+            padding: 0 0 8px 0
+
+        &:nth-child(5)
+            padding: 8px 0 16px 0
+
+        &--active
+            width: 60px
 
 @media (min-width: 1280px)
     .android-reviews__container
