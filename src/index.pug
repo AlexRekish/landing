@@ -23,7 +23,7 @@ html(lang="ru")
         link(rel="stylesheet" href="css/main.min.css")
     body.isHome
         header.page-header
-            a.logo__wrapper(href="https://golos.io" target="_blank")
+            a.logo__wrapper(href="https://golos.io" target="_blank" rel="noreferrer")
                 img.logo__img(src="img/logo/logo.svg" alt="Golos.io" width="28" height="30")
                 p.logo Golos
             .page-header__l10n
@@ -56,7 +56,8 @@ html(lang="ru")
                                 span.be-in-touch__checkbox-indicator
                                 | Сообщите мне о выходе приложения.
                         .be-in-touch__email-wrapper
-                            input.be-in-touch__email(type="email" name="" id="" placeholder="Email")
+                            label.visually-hidden(for="email-field") Email
+                            input.be-in-touch__email(type="email" id="email-field" placeholder="Email")
                             button.be-in-touch__send-button(type="submit") Отправить
                 .be-in-touch__img-wrapper
                     picture
@@ -108,7 +109,7 @@ html(lang="ru")
                     .android__wrapper
                         h2.android__title Уже доступно для android
                         p.android__description Приложение для android вы можете скачать прямо сейчас
-                        a.android__link(href="https://play.google.com/store/apps/details?id=io.golos.golos" target="_blank")
+                        a.android__link(href="https://play.google.com/store/apps/details?id=io.golos.golos" target="_blank" rel="noreferrer")
                             span.visually-hidden Golos.io в google play
                     .android__img-wrapper
                         picture
@@ -132,16 +133,18 @@ html(lang="ru")
                                         img.android-reviews__review-star(src="img/logo/icon-star.svg", alt="Звезда рейтинга" width="14" height="14")
                                         - starCount--;
                                 button.android-reviews__next-review.android-reviews__next-review--mob(type="button")
+                                    span.visually-hidden Следующий отзыв
                             p.android-reviews__review-text Интересное приложение) пока еще не полностью разобралсяв нем но это действительно чтото новое чего еще небыло на просторах интернета))
                     .android-reviews__reviewers
                         img.android-reviews__reviewer-ava.android-reviews__reviewer-ava--active(src="img/logo/active-a.svg", alt="" width="30")
-                        img.android-reviews__reviewer-ava(src="img/logo/active-m-a-p@3x.png", alt="" width="30")
+                        img.android-reviews__reviewer-ava(src="img/logo/active-m-a@3x.png", alt="" width="30")
                         img.android-reviews__reviewer-ava(src="img/logo/active-r-p.svg", alt="" width="30")
                         img.android-reviews__reviewer-ava(src="img/logo/active-t-d@3x.png", alt="" width="30")
                         img.android-reviews__reviewer-ava(src="img/logo/active-c-p.svg", alt="" width="30")
                         button.android-reviews__next-review.android-reviews__next-review--desk(type="button")
+                            span.visually-hidden Следующий отзыв
 
         footer.page-footer
             include _templates/social.pug
-            p.page-footer__copyrights  IT, OOO. All rights reserved
+            p.page-footer__copyrights   © 2018 IT, OOO. All rights reserved
         script(src="js/scripts.min.js")
