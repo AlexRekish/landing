@@ -139,7 +139,7 @@ gulp.task('html', function() {
         .src('src/*.pug')
         .pipe(
             data(function(file) {
-                return JSON.parse(fs.readFileSync('./src/locales/RU.json'));
+                return JSON.parse(fs.readFileSync('./src/locales/EN.json'));
             })
         )
         .pipe(pug({ pretty: true }))

@@ -1,14 +1,14 @@
 .overlay
 .modal
     img(src="img/logo/email.svg", alt="").modal__icon
-    h3.modal__thanks Спасибо за подписку
-    p.modal__description Мы сообщим вам по почте о выходе приложения Golos.io и возможности тестирования.
+    h3.modal__thanks=modal.thanks
+    p.modal__description=modal.message
         br
         br
-        | С уважением, Команда Golos.io
+        | #{modal.dev_team}
     .modal__links-container
         a(href="").modal__android-link
-            span.visually-hidden Android приложение
+            span.visually-hidden=modal.android_app
         a.modal__ios-link
-            span.visually-hidden iOs приложение
-    a(href="").modal__back Вернуться на Golos.io
+            span.visually-hidden=modal.ios_app
+    a(href="").modal__back=modal.back

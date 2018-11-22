@@ -1,8 +1,7 @@
 doctype html
-html(lang="ru")
+html(lang=locale)
     head
         meta(charset="utf-8")
-        // <base href="/">
         title Golos.io ios
         meta(name="description" content="")
         meta(name="keywords" content="")
@@ -27,10 +26,10 @@ html(lang="ru")
                 img.logo__img(src="img/logo/logo.svg" alt="Golos.io" width="28" height="30")
                 p.logo Golos
             .page-header__l10n(tabindex="0")
-                p.page-header__l10n-active RU
+                p.page-header__l10n-active=locale
                 ul.page-header__l10n-list
                     li.page-header__l10n-item
-                        a(href="#").page-header__l10n-locale EN
+                        a(href="#").page-header__l10n-locale=second_locale
         main
             section.be-in-touch
                 .be-in-touch__wrapper
@@ -86,7 +85,7 @@ html(lang="ru")
                         img.about-golos__img(src="img/about-golos.png", alt="")
             section.screenshots
                 .screenshots__container
-                    h2.screenshots__title Скриншоты
+                    h2.screenshots__title=screenshots
                     .screenshots__wrapper
                         .screenshots__img-container
                             picture
@@ -122,10 +121,9 @@ html(lang="ru")
                     .android-reviews__wrapper
                         h2.android-reviews__title=android_reviews.title
                         button.android-reviews__next-review.android-reviews__next-review--mob(type="button")
-                            span.visually-hidden Следующий отзыв
+                            span.visually-hidden=android_reviews.next_review
                         .android-reviews__review-wrapper
                             .android-reviews__review-container
-
                                 .android-reviews__reviews-carousel
                                     include _templates/android-review.pug
                     .android-reviews__reviewers
@@ -135,9 +133,9 @@ html(lang="ru")
                         img.android-reviews__reviewer-ava.android-reviews__reviewer-ava--desk(src="img/logo/active-t-d@3x.png", alt="" width="30")
                         img.android-reviews__reviewer-ava.android-reviews__reviewer-ava--desk(src="img/logo/active-c-p.svg", alt="" width="30")
                         button.android-reviews__next-review.android-reviews__next-review--desk(type="button")
-                            span.visually-hidden Следующий отзыв
+                            span.visually-hidden=android_reviews.next_review
             include _templates/modal.pug
         footer.page-footer
             include _templates/social.pug
-            p.page-footer__copyrights   © 2018 IT, OOO. All rights reserved
+            p.page-footer__copyrights=footer.copyrights
         script(src="js/scripts.min.js")
