@@ -4,38 +4,43 @@
             author: 'Anton Lis',
             starCount: 5,
             text: 'Интересное приложение) пока еще не полностью разобралсяв нем но это действительно чтото новое чего еще небыло на просторах интернета))',
-            active: true
+            active: true,
+            img: 'img/logo/active-a.svg'
         },
         {
             author: 'Marat Azimov',
             starCount: 5,
             text: 'Только сегодня узнал об этом проекте. Очень понравилось сразу. Наконец-то появилось что-то новое, похоже, наверно, на фейс, но более продвинутое. Класс!',
-            active: false
+            active: false,
+            img: 'img/logo/active-m-a@3x.png'
         },
         {
             author: 'Роман Коротков',
             starCount: 5,
             text: 'Огромная мотивация для творчества и тонны интересной информации)',
-            active: false
+            active: false,
+            img: 'img/logo/active-r-p.svg'
         },
         {
             author: 'Тень Дьявола',
             starCount: 5,
             text: 'Это серьезная платформа, у которой есть будущее. Спасибо разработчикам за приложение.',
-            active: false
+            active: false,
+            img: 'img/logo/active-t-d@3x.png'
         },
         {
             author: 'Сергей Бабик',
             starCount: 5,
             text: 'Пока что лучшее, что попадалось.',
-            active: false
+            active: false,
+            img: 'img/logo/active-c-p.svg'
         },
     ]
 
 each review in reviews
     .android-reviews__review(class=review.active ? 'android-reviews__review--active' : '')
         .android-reviews__review-header
-            img.android-reviews__reviewer-ava.android-reviews__reviewer-ava--mob(src="img/logo/active-a.svg", alt="" width="30")
+            img.android-reviews__reviewer-ava.android-reviews__reviewer-ava--mob(src=review.img, alt="" width="30")
             p.android-reviews__review-author=review.author
             .android-reviews__review-stars
                 - let starCount = review.starCount;

@@ -6,12 +6,12 @@ const l10n = document.querySelector('.page-header__l10n');
 const l10nList = document.querySelector('.page-header__l10n-list');
 const l10nActive = document.querySelector('.page-header__l10n-active');
 
-const openL10n = evt => {
+const openL10nHandler = evt => {
     evt.preventDefault();
     l10nList.classList.toggle('page-header__l10n-list--open');
 };
 
-l10n.addEventListener('click', openL10n);
+l10n.addEventListener('click', openL10nHandler);
 
 // reviews-carousel
 
@@ -25,7 +25,7 @@ let translateDesk = 0;
 let translateMob = 0;
 let paddings = 0;
 
-const nextReviewDesk = evt => {
+const nextReviewDeskHandler = evt => {
     evt.preventDefault();
     translateDesk -= 314;
     translateDesk = Math.abs(translateDesk) < 1570 ? translateDesk : 0;
@@ -43,7 +43,7 @@ const nextReviewDesk = evt => {
         }
     }
 };
-const nextReviewMob = evt => {
+const nextReviewMobHandler = evt => {
     evt.preventDefault();
     translateMob -= 100;
     paddings += 32;
@@ -65,5 +65,107 @@ const nextReviewMob = evt => {
     }
 };
 
-nextReviewButtonDesk.addEventListener('click', nextReviewDesk);
-nextReviewButtonMob.addEventListener('click', nextReviewMob);
+nextReviewButtonDesk.addEventListener('click', nextReviewDeskHandler);
+nextReviewButtonMob.addEventListener('click', nextReviewMobHandler);
+
+// screenshots
+
+const slider = document.querySelector('.screenshots__img-container');
+const screenshots = document.querySelectorAll('.screenshots__screenshot');
+const firstScreenshotButton = document.querySelector('.screenshots__button--first');
+const secondScreenshotButton = document.querySelector('.screenshots__button--second');
+const screenshotsSection = document.querySelector('.screenshots');
+
+console.log(slider);
+
+const nextScreenshotHandler = evt => {
+    evt.preventDefault();
+    for (let i = 0; i < screenshots.length; i++) {
+        if (screenshots[i].classList.contains('screenshots__screenshot--active')) {
+            if (i + 1 < screenshots.length) {
+                slider.style.transform = 'translateX(-328px)';
+                screenshots[i].classList.remove('screenshots__screenshot--active');
+                screenshots[i + 1].classList.add('screenshots__screenshot--active');
+                firstScreenshotButton.removeAttribute('disabled');
+                secondScreenshotButton.setAttribute('disabled', true);
+                break;
+            }
+        }
+    }
+};
+
+const prevScreenshotHandler = evt => {
+    evt.preventDefault();
+    for (let i = 0; i < screenshots.length; i++) {
+        if (screenshots[i].classList.contains('screenshots__screenshot--active')) {
+            if (i - 1 >= 0) {
+                slider.style.transform = 'translateX(0px)';
+                screenshots[i].classList.remove('screenshots__screenshot--active');
+                screenshots[i - 1].classList.add('screenshots__screenshot--active');
+                firstScreenshotButton.setAttribute('disabled', true);
+                secondScreenshotButton.removeAttribute('disabled');
+                break;
+            }
+        }
+    }
+};
+
+let xStart = null;
+const swipeLeftHandler = evt => {
+    evt.preventDefault();
+};
+
+const touchStartHandler = evt => {
+    if (evt.changedTouches.length !== 1 || xStart !== null) return;
+    xStart = evt.changedTouches[0].clientX;
+    screenshotsSection.addEventListener('touchend', touchEndHandler);
+};
+
+const touchEndHandler = evt => {
+    if (xStart === null) return;
+
+    const xEnd = evt.changedTouches[0].clientX;
+    const xDiff = xStart - xEnd;
+    if (Math.abs(xDiff) > 100) {
+        if (xDiff < 0) {
+            prevScreenshotHandler(evt);
+            xStart = null;
+        }
+        if (xDiff > 0) {
+            nextScreenshotHandler(evt);
+            xStart = null;
+        }
+    } else xStart = null;
+    screenshotsSection.removeEventListener('touchend', touchEndHandler);
+};
+
+firstScreenshotButton.addEventListener('click', prevScreenshotHandler);
+secondScreenshotButton.addEventListener('click', nextScreenshotHandler);
+screenshotsSection.addEventListener('touchstart', touchStartHandler);
+
+const resizeHandler = () => {
+    if (translateMob) {
+        translateMob = 0;
+        for (let i = 0; i < reviews.length; i++) {
+            if (reviews[i].classList.contains('android-reviews__review--active')) {
+                reviews[i].classList.remove('android-reviews__review--active');
+                reviews[0].classList.add('android-reviews__review--active');
+                break;
+            }
+        }
+        carousel.style.transform = 'translateX(0)';
+    }
+
+    if (translateDesk) {
+        translateDesk = 0;
+        carousel.style.transform = 'translateX(0)';
+    }
+
+    if (slider.style.transform) {
+        slider.style.transform = 'translateX(0px)';
+        firstScreenshotButton.setAttribute('disabled', true);
+        secondScreenshotButton.removeAttribute('disabled');
+    }
+};
+
+window.addEventListener('resize', resizeHandler);

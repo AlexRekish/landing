@@ -4,6 +4,11 @@
     padding: 40px 18px
     background-color: $blue
 
+.screenshots__container
+    display: flex
+    flex-direction: column
+    align-items: center
+
 .screenshots__title
     color: #fff
     font-size: 26px
@@ -16,16 +21,27 @@
 .screenshots__wrapper
     display: flex
     justify-content: center
+    position: relative
     height: 279px
+    width: 328px
     overflow: hidden
 
+.screenshots__img-container
+    position: absolute
+    top: 0
+    left: 0
+    height: 100%
+    display: flex
+    justify-content: center
+    transition: transform 0.2s ease
+
 .screenshots__screenshot
-    display: none
+    visibility: hidden
     max-height: 100%
     width: 328px
 
 .screenshots__screenshot--active
-    display: block
+    visibility: visible
 
 .screenshots__active-indicator
     display: flex
@@ -48,15 +64,14 @@
 .screenshots__button:not(:last-child)
     margin-right: 18px
 
-
-@media (min-width: 1280px)
+@media (min-width: 1088px)
     .screenshots
         padding: 80px 0 85px 0
 
     .screenshots__container
-        max-width: 1280px
+        max-width: 1088px
         margin: 0 auto
-        padding: 0 160px
+        padding: 0 40px
 
     .screenshots__title
         font-size: 34px
@@ -67,11 +82,19 @@
         display: flex
         justify-content: center
         height: 400px
+        width: 100%
 
     .screenshots__active-indicator
         display: none
 
     .screenshots__screenshot
-        display: block
+        visibility: visible
         width: 472px
+
+@media (min-width: 1280px)
+    .screenshots__container
+        max-width: 1280px
+        margin: 0 auto
+        padding: 0 160px
+
 

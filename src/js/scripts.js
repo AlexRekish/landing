@@ -76,12 +76,12 @@ var l10n = document.querySelector('.page-header__l10n');
 var l10nList = document.querySelector('.page-header__l10n-list');
 var l10nActive = document.querySelector('.page-header__l10n-active');
 
-var openL10n = function openL10n(evt) {
+var openL10nHandler = function openL10nHandler(evt) {
     evt.preventDefault();
     l10nList.classList.toggle('page-header__l10n-list--open');
 };
 
-l10n.addEventListener('click', openL10n);
+l10n.addEventListener('click', openL10nHandler);
 
 // reviews-carousel
 
@@ -95,7 +95,7 @@ var translateDesk = 0;
 var translateMob = 0;
 var paddings = 0;
 
-var nextReviewDesk = function nextReviewDesk(evt) {
+var nextReviewDeskHandler = function nextReviewDeskHandler(evt) {
     evt.preventDefault();
     translateDesk -= 314;
     translateDesk = Math.abs(translateDesk) < 1570 ? translateDesk : 0;
@@ -113,7 +113,7 @@ var nextReviewDesk = function nextReviewDesk(evt) {
         }
     }
 };
-var nextReviewMob = function nextReviewMob(evt) {
+var nextReviewMobHandler = function nextReviewMobHandler(evt) {
     evt.preventDefault();
     translateMob -= 100;
     paddings += 32;
@@ -135,8 +135,110 @@ var nextReviewMob = function nextReviewMob(evt) {
     }
 };
 
-nextReviewButtonDesk.addEventListener('click', nextReviewDesk);
-nextReviewButtonMob.addEventListener('click', nextReviewMob);
+nextReviewButtonDesk.addEventListener('click', nextReviewDeskHandler);
+nextReviewButtonMob.addEventListener('click', nextReviewMobHandler);
+
+// screenshots
+
+var slider = document.querySelector('.screenshots__img-container');
+var screenshots = document.querySelectorAll('.screenshots__screenshot');
+var firstScreenshotButton = document.querySelector('.screenshots__button--first');
+var secondScreenshotButton = document.querySelector('.screenshots__button--second');
+var screenshotsSection = document.querySelector('.screenshots');
+
+console.log(slider);
+
+var nextScreenshotHandler = function nextScreenshotHandler(evt) {
+    evt.preventDefault();
+    for (var i = 0; i < screenshots.length; i++) {
+        if (screenshots[i].classList.contains('screenshots__screenshot--active')) {
+            if (i + 1 < screenshots.length) {
+                slider.style.transform = 'translateX(-328px)';
+                screenshots[i].classList.remove('screenshots__screenshot--active');
+                screenshots[i + 1].classList.add('screenshots__screenshot--active');
+                firstScreenshotButton.removeAttribute('disabled');
+                secondScreenshotButton.setAttribute('disabled', true);
+                break;
+            }
+        }
+    }
+};
+
+var prevScreenshotHandler = function prevScreenshotHandler(evt) {
+    evt.preventDefault();
+    for (var i = 0; i < screenshots.length; i++) {
+        if (screenshots[i].classList.contains('screenshots__screenshot--active')) {
+            if (i - 1 >= 0) {
+                slider.style.transform = 'translateX(0px)';
+                screenshots[i].classList.remove('screenshots__screenshot--active');
+                screenshots[i - 1].classList.add('screenshots__screenshot--active');
+                firstScreenshotButton.setAttribute('disabled', true);
+                secondScreenshotButton.removeAttribute('disabled');
+                break;
+            }
+        }
+    }
+};
+
+var xStart = null;
+var swipeLeftHandler = function swipeLeftHandler(evt) {
+    evt.preventDefault();
+};
+
+var touchStartHandler = function touchStartHandler(evt) {
+    if (evt.changedTouches.length !== 1 || xStart !== null) return;
+    xStart = evt.changedTouches[0].clientX;
+    screenshotsSection.addEventListener('touchend', touchEndHandler);
+};
+
+var touchEndHandler = function touchEndHandler(evt) {
+    if (xStart === null) return;
+
+    var xEnd = evt.changedTouches[0].clientX;
+    var xDiff = xStart - xEnd;
+    if (Math.abs(xDiff) > 100) {
+        if (xDiff < 0) {
+            prevScreenshotHandler(evt);
+            xStart = null;
+        }
+        if (xDiff > 0) {
+            nextScreenshotHandler(evt);
+            xStart = null;
+        }
+    } else xStart = null;
+    screenshotsSection.removeEventListener('touchend', touchEndHandler);
+};
+
+firstScreenshotButton.addEventListener('click', prevScreenshotHandler);
+secondScreenshotButton.addEventListener('click', nextScreenshotHandler);
+screenshotsSection.addEventListener('touchstart', touchStartHandler);
+
+var resizeHandler = function resizeHandler() {
+    if (translateMob) {
+        translateMob = 0;
+        for (var i = 0; i < reviews.length; i++) {
+            if (reviews[i].classList.contains('android-reviews__review--active')) {
+                reviews[i].classList.remove('android-reviews__review--active');
+                reviews[0].classList.add('android-reviews__review--active');
+                break;
+            }
+        }
+        carousel.style.transform = 'translateX(0)';
+    }
+
+    if (translateDesk) {
+        translateDesk = 0;
+        carousel.style.transform = 'translateX(0)';
+    }
+
+    if (slider.style.transform) {
+        slider.style.transform = 'translateX(0px)';
+        firstScreenshotButton.setAttribute('disabled', true);
+        secondScreenshotButton.removeAttribute('disabled');
+    }
+};
+
+window.addEventListener('resize', resizeHandler);
 
 /***/ })
 /******/ ]);

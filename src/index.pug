@@ -90,19 +90,20 @@ html(lang="ru")
                 .screenshots__container
                     h2.screenshots__title Скриншоты
                     .screenshots__wrapper
-                        picture
-                            source(srcset="img/screenshots-1@2x.webp 2x, img/screenshots-1@3x.webp 3x" type="image/webp")
+                        .screenshots__img-container
+                            picture
+                                source(srcset="img/screenshots-1@2x.webp 2x, img/screenshots-1@3x.webp 3x" type="image/webp")
 
-                            source(srcset="img/screenshots-1@2x.png 2x, img/screenshots-1@3x.png 3x" type="image/png")
-                            img.screenshots__screenshot.screenshots__screenshot--active(src="img/screenshots-1.png", alt="")
-                        picture
-                            source(srcset="img/screenshots-2@2x.webp 2x, img/screenshots-2@3x.webp 3x" type="image/webp")
+                                source(srcset="img/screenshots-1@2x.png 2x, img/screenshots-1@3x.png 3x" type="image/png")
+                                img.screenshots__screenshot.screenshots__screenshot--active(src="img/screenshots-1.png", alt="")
+                            picture
+                                source(srcset="img/screenshots-2@2x.webp 2x, img/screenshots-2@3x.webp 3x" type="image/webp")
 
-                            source(srcset="img/screenshots-2@2x.png 2x, img/screenshots-2@3x.png 3x" type="image/png")
-                            img.screenshots__screenshot(src="img/screenshots-2.png", alt="")
+                                source(srcset="img/screenshots-2@2x.png 2x, img/screenshots-2@3x.png 3x" type="image/png")
+                                img.screenshots__screenshot(src="img/screenshots-2.png", alt="")
                     .screenshots__active-indicator
-                        button.screenshots__button(type="button" disabled)
-                        button.screenshots__button(type="button")
+                        button.screenshots__button.screenshots__button--first(type="button" disabled)
+                        button.screenshots__button.screenshots__button--second(type="button")
             section.android
                 .android__container
                     .android__wrapper
