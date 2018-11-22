@@ -147,15 +147,17 @@ const testersForm = document.querySelector('.be-in-touch__form');
 const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
 
-const sendData = async () => {
-    const data = new FormData(testersForm);
-    const fetchConfig = { method: 'POST', body: data };
-    let res;
-    try {
-        res = await fetch('https://', fetchConfig);
-    } catch (error) {}
-    return res;
-};
+// const sendData = async () => {
+//     const data = new FormData(testersForm);
+//     const fetchConfig = { method: 'POST', body: data };
+//     let res;
+//     let response;
+//     try {
+//         res = await fetch('https://dziwactwa.herokuapp.com/api/users', fetchConfig);
+//         response = await res.json();
+//     } catch (error) {}
+//     return response;
+// };
 
 const testersFormSubmitHandler = evt => {
     evt.preventDefault();

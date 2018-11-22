@@ -15,7 +15,9 @@ const gulp = require('gulp'),
     run = require('run-sequence'),
     del = require('del'),
     webpack = require('webpack-stream'),
-    pug = require('gulp-pug');
+    pug = require('gulp-pug'),
+    data = require('gulp-data'),
+    fs = require('fs');
 
 //server
 
@@ -109,9 +111,6 @@ gulp.task('webpack', function() {
                             test: /\.(js)$/,
                             exclude: /(node_modules)/,
                             loader: 'babel-loader',
-                            query: {
-                                presets: ['env'],
-                            },
                         },
                     ],
                 },
@@ -139,10 +138,11 @@ gulp.task('html', function() {
     return gulp
         .src('src/*.pug')
         .pipe(
-            pug({
-                pretty: true,
+            data(function(file) {
+                return JSON.parse(fs.readFileSync('./src/locales/RU.json'));
             })
         )
+        .pipe(pug({ pretty: true }))
         .pipe(gulp.dest('build'))
         .pipe(browsersync.reload({ stream: true }));
 });

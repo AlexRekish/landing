@@ -35,29 +35,27 @@ html(lang="ru")
             section.be-in-touch
                 .be-in-touch__wrapper
                     .main-message
-                        h1.message__header
-                            | Golos.io активно работает над выпуском приложения блог-платформы будущего теперь и на iOs платформе.
-                        p.message__description
-                            | Децентрализованная блог-платформа на блокчейне Голос давно работает на web платформе и имеет собственное приложения на Android.
+                        h1.message__header=be_in_touch.main_header
+                        p.message__description=be_in_touch.main_description_1
                             br
-                            | Теперь настал черед порадовать и пользователей iOs.
-                    h2.be-in-touch__title Будь на связи
-                    strong.message__header Приложение Golos.io на iOs появится уже совсем скоро!
-                    p.message__description Будь в числе первых пользователей с возможностью протестировать приложение.
+                            | #{be_in_touch.main_description_2}
+                    h2.be-in-touch__title=be_in_touch.be_in_touch
+                    strong.message__header=be_in_touch.almost_done
+                    p.message__description=be_in_touch.be_first
                     form.be-in-touch__form(enctype="multipart/form-data")
                         div.be-in-touch__checkbox-wrapper
                             label.be-in-touch__label(for="want-test")
                                 input.be-in-touch__checkbox.visually-hidden(type="checkbox" name="" id="want-test" checked)
                                 span.be-in-touch__checkbox-indicator
-                                | Хочу тестировать. Добавьте меня в список тестировщиков альфа версии приложения
+                                | #{be_in_touch.want_test}
                             label.be-in-touch__label(for="want-message")
                                 input.be-in-touch__checkbox.visually-hidden(type="checkbox" name="" id="want-message")
                                 span.be-in-touch__checkbox-indicator
-                                | Сообщите мне о выходе приложения.
+                                | #{be_in_touch.want_message}
                         .be-in-touch__email-wrapper
                             label.visually-hidden(for="email-field") Email
                             input.be-in-touch__email(type="email" id="email-field" placeholder="Email" required)
-                            button.be-in-touch__send-button(type="submit") Отправить
+                            button.be-in-touch__send-button(type="submit")=be_in_touch.send_desktop
                 .be-in-touch__img-wrapper
                     picture
                         source(media="(max-width: 1087px)" srcset="img/be-in-touch.webp 1x, img/be-in-touch@2x.webp 2x, img/be-in-touch@3x.webp 3x" type="image/webp")
@@ -68,16 +66,16 @@ html(lang="ru")
                         img(src="img/be-in-touch_dk.png", alt="" height="734")
             section.steps
                 .steps__container
-                    - const steps = ['Подпишись', 'Получи тестовую версию', 'Узнай первым о релизе приложения']
-                    each val, index in steps
+                    - const innerSteps = [steps.first_step_desc, steps.second_step_desc, steps.third_step_desc]
+                    each val, index in innerSteps
                         .steps__step
                             img(src=`img/logo/icon-instr-${index + 1}.svg`, alt=`Иконка '${val}'` width="76" height="76")
-                            p.steps__step-header=`Шаг ${index + 1}`
+                            p.steps__step-header=`${steps.step} ${index + 1}`
                             p.steps__step-description=val
             section.about-golos
                 .about-golos__wrapper
                     h2.about-golos__title Golos.io
-                    strong.about-golos__description Место, где можно самовыражаться и получать поддержку. Рассказывайте о том, что важно для вас. Открывайте для себя новое и интересное.
+                    strong.about-golos__description=about_golos.main_description
                     .about-golos__appeals
                         include _templates/appeals.pug
                 .about-golos__img-wrapper
@@ -107,8 +105,8 @@ html(lang="ru")
             section.android
                 .android__container
                     .android__wrapper
-                        h2.android__title Уже доступно для android
-                        p.android__description Приложение для android вы можете скачать прямо сейчас
+                        h2.android__title=android.already_running
+                        p.android__description=android.download
                         a.android__link(href="https://play.google.com/store/apps/details?id=io.golos.golos" target="_blank" rel="noreferrer")
                             span.visually-hidden Golos.io в google play
                     .android__img-wrapper
@@ -122,7 +120,7 @@ html(lang="ru")
                     .android-reviews__img-wrapper
                         img.android-reviews__img(src="img/android-reviews.svg", alt="")
                     .android-reviews__wrapper
-                        h2.android-reviews__title Oтзывы android приложения
+                        h2.android-reviews__title=android_reviews.title
                         button.android-reviews__next-review.android-reviews__next-review--mob(type="button")
                             span.visually-hidden Следующий отзыв
                         .android-reviews__review-wrapper
