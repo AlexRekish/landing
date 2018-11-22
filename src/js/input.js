@@ -76,8 +76,6 @@ const firstScreenshotButton = document.querySelector('.screenshots__button--firs
 const secondScreenshotButton = document.querySelector('.screenshots__button--second');
 const screenshotsSection = document.querySelector('.screenshots');
 
-console.log(slider);
-
 const nextScreenshotHandler = evt => {
     evt.preventDefault();
     for (let i = 0; i < screenshots.length; i++) {
@@ -142,6 +140,30 @@ const touchEndHandler = evt => {
 firstScreenshotButton.addEventListener('click', prevScreenshotHandler);
 secondScreenshotButton.addEventListener('click', nextScreenshotHandler);
 screenshotsSection.addEventListener('touchstart', touchStartHandler);
+
+// testers form
+
+const testersForm = document.querySelector('.be-in-touch__form');
+const modal = document.querySelector('.modal');
+const overlay = document.querySelector('.overlay');
+
+const sendData = async () => {
+    const data = new FormData(testersForm);
+    const fetchConfig = { method: 'POST', body: data };
+    let res;
+    try {
+        res = await fetch('https://', fetchConfig);
+    } catch (error) {}
+    return res;
+};
+
+const testersFormSubmitHandler = evt => {
+    evt.preventDefault();
+    modal.classList.add('modal--active');
+    overlay.classList.add('overlay--active');
+};
+
+testersForm.addEventListener('submit', testersFormSubmitHandler);
 
 const resizeHandler = () => {
     if (translateMob) {
