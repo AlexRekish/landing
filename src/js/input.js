@@ -147,20 +147,20 @@ const testersForm = document.querySelector('.be-in-touch__form');
 const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
 
-// const sendData = async () => {
-//     const data = new FormData(testersForm);
-//     const fetchConfig = { method: 'POST', body: data };
-//     let res;
-//     let response;
-//     try {
-//         res = await fetch('https://dziwactwa.herokuapp.com/api/users', fetchConfig);
-//         response = await res.json();
-//     } catch (error) {}
-//     return response;
-// };
-
 const testersFormSubmitHandler = evt => {
     evt.preventDefault();
+    // const data = new FormData(testersForm);
+    // const fetchConfig = { method: 'POST', body: data };
+    // fetch('https://url', fetchConfig)
+    //     .then(res => {
+    //         if (res.status === 200) {
+    //             modal.classList.add('modal--active');
+    //             overlay.classList.add('overlay--active');
+    //         } else console.log('server unavailable');
+    //     })
+    //     .catch(err => {
+    //         console.log('something went wrong...', err);
+    //     });
     modal.classList.add('modal--active');
     overlay.classList.add('overlay--active');
 };
